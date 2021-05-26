@@ -1,9 +1,20 @@
 package com.galvanize.movies;
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+=======
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import org.springframework.web.bind.annotation.*;
+
+>>>>>>> fee35360bbe961b66e93340a8202c194a14c4ba4
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +34,11 @@ public class MoviesController {
         root.gross = 134.97;
         root.year = "1972";
         Person myperson = new Person();
+<<<<<<< HEAD
         //myperson.firstName = "Francis Ford";
+=======
+        myperson.firstName =null;
+>>>>>>> fee35360bbe961b66e93340a8202c194a14c4ba4
         myperson.lastName = "Copolla";
         myperson.role = "Director";
         Person myperson2 = new Person();
@@ -55,41 +70,149 @@ public class MoviesController {
         root.credits = Arrays.asList(credit1,credit2,credit3, credit4, credit5);
         return root;
     }
+<<<<<<< HEAD
+=======
+
+    @PostMapping("/gross/total")
+    public int getJSONData(@RequestBody ArrayList<Root> roots) {
+        int gross=0;
+        for (Root item: roots)
+         {
+             gross+= item.gross;
+        }
+        return gross;
+    }
+
+    @JsonNaming(PropertyNamingStrategy.UpperCamelCaseStrategy.class)
+>>>>>>> fee35360bbe961b66e93340a8202c194a14c4ba4
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Person{
-        @JsonProperty("Role")
+
         public String role;
-        @JsonProperty("FirstName")
+
         public String firstName;
-        @JsonProperty("LastName")
+
         public String lastName;
     }
+<<<<<<< HEAD
+=======
+
+    @JsonNaming(PropertyNamingStrategy.UpperCamelCaseStrategy.class)
+>>>>>>> fee35360bbe961b66e93340a8202c194a14c4ba4
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Credit{
-        @JsonProperty("Person")
+
         public Person person;
     }
+<<<<<<< HEAD
+=======
+
+    @JsonNaming(PropertyNamingStrategy.UpperCamelCaseStrategy.class)
+>>>>>>> fee35360bbe961b66e93340a8202c194a14c4ba4
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Root{
-        @JsonProperty("Title")
+
         public String title;
-        @JsonProperty("Minutes")
+
         public int minutes;
-        @JsonProperty("Genre")
+
         public String genre;
-        @JsonProperty("Rating")
+
         public double rating;
-        @JsonProperty("Metascore")
-        public int metascore;
-        @JsonProperty("Description")
+
+
         public String description;
-        @JsonProperty("Votes")
+
         public int votes;
-        @JsonProperty("Gross")
+
+
         public double gross;
-        @JsonProperty("Year")
+
         public String year;
-        @JsonProperty("Credits")
+
         public List<Credit> credits;
+
+        public int metascore;
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public int getMinutes() {
+            return minutes;
+        }
+
+        public void setMinutes(int minutes) {
+            this.minutes = minutes;
+        }
+
+        public String getGenre() {
+            return genre;
+        }
+
+        public void setGenre(String genre) {
+            this.genre = genre;
+        }
+
+        public double getRating() {
+            return rating;
+        }
+
+        public void setRating(double rating) {
+            this.rating = rating;
+        }
+
+        public int getMetascore() {
+            return metascore;
+        }
+
+        public void setMetascore(int metascore) {
+            this.metascore = metascore;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public int getVotes() {
+            return votes;
+        }
+
+        public void setVotes(int votes) {
+            this.votes = votes;
+        }
+
+        public double getGross() {
+            return gross;
+        }
+
+        public void setGross(double gross) {
+            this.gross = gross;
+        }
+
+        public String getYear() {
+            return year;
+        }
+
+        public void setYear(String year) {
+            this.year = year;
+        }
+
+        public List<Credit> getCredits() {
+            return credits;
+        }
+
+        public void setCredits(List<Credit> credits) {
+            this.credits = credits;
+        }
+
+
     }
 }

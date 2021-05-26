@@ -40,6 +40,7 @@ public class MoviesControllerTest {
                 .andExpect(
                         jsonPath("$.Credits[0].Person.FirstName").doesNotHaveJsonPath() );
     }
+<<<<<<< HEAD
 
     @Test
     void testGrossTotal() throws Exception {
@@ -50,8 +51,23 @@ public class MoviesControllerTest {
         this.mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().string("192.27"));
+=======
+  @Test
+    public void testRawBody() throws Exception {
+        String json = getJSON("C:\\Users\\913170\\IdeaProjects\\Movies\\src\\main\\resources\\movies.json");
+>>>>>>> fee35360bbe961b66e93340a8202c194a14c4ba4
 
+        MockHttpServletRequestBuilder request = post("/movies/gross/total")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json);
 
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("191"));
+    }
+
+    private String getJSON(String path) throws Exception {
+        return new String(Files.readAllBytes(Paths.get(path)));
     }
 
     private String getJSON(String path) throws Exception {
