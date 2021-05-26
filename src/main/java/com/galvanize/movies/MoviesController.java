@@ -1,5 +1,6 @@
 package com.galvanize.movies;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ public class MoviesController {
         Root root = new Root();
         root.title = "The Godfather";
         root.minutes= 175;
-        root.genre = "Crime, Drama";
+        root.genre = null;
         root.rating = 9.2;
         root.metascore = 100;
         root.description = "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.";
@@ -27,7 +28,7 @@ public class MoviesController {
         root.year = "1972";
 
         Person myperson = new Person();
-        myperson.firstName = "Francis Ford";
+        //myperson.firstName = "Francis Ford";
         myperson.lastName = "Copolla";
         myperson.role = "Director";
 
@@ -72,6 +73,7 @@ public class MoviesController {
 
     }
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Person{
         @JsonProperty("Role")
         public String role;
@@ -81,11 +83,13 @@ public class MoviesController {
         public String lastName;
     }
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Credit{
         @JsonProperty("Person")
         public Person person;
     }
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Root{
         @JsonProperty("Title")
         public String title;
