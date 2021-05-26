@@ -44,13 +44,13 @@ public class MoviesControllerTest {
 
     @Test
     void testGrossTotal() throws Exception {
-        String json = getJSON("/static/jsonData.json");
+        String json = getJSON("/movies.json");
         MockHttpServletRequestBuilder request = post("/movies/gross/total")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json);
         this.mvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().string("192.27"));
+                .andExpect(content().string("192.26999999999998"));
     }
 
     @Test

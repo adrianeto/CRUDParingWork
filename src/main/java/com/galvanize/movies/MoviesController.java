@@ -1,8 +1,6 @@
 package com.galvanize.movies;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import org.springframework.web.bind.annotation.*;
@@ -62,12 +60,13 @@ public class MoviesController {
 
 
     @PostMapping("/gross/total")
-    public int getJSONData(@RequestBody ArrayList<Root> roots) {
-        int gross=0;
-        for (Root item: roots)
+    public double getJSONData(@RequestBody ArrayList<MoviesDTO.Root> roots) {
+        Double gross = 0.0;
+        for (MoviesDTO.Root item: roots)
          {
              gross+= item.gross;
         }
+
         return gross;
     }
 
